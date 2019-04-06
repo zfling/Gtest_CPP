@@ -1,0 +1,78 @@
+###########################################
+# Makefile for google test and zfl learning
+# Author : zfl
+# Date   : 2019-02-27
+# Version: V0.1
+###########################################	
+
+# Current Directory
+CUR_DIR = $(shell pwd)
+
+# C++ Compiler
+CC = g++
+CXXFLAGS += -g -Wall -Wextra
+
+# Build File
+BUILD_DIR = $(CUR_DIR)/build
+
+# Execution File
+TESTS = $(BUILD_DIR)/run_tests
+
+# GTEST GMOCK
+TEST_MOCK_INC = -I$(CUR_DIR)/include
+LIB_MOCK_INC = $(CUR_DIR)/../lib
+
+# XXX begin
+# XXX Directory and File
+XXX_INC_DIR = $(CUR_DIR)/app/inc/xxx
+XXX_INC_HEADERS = ${wildcard $(XXX_INC_DIR)/*.h}
+XXX_SRC_DIR = $(CUR_DIR)/app/src/xxx
+XXX_SOURCES = ${wildcard $(XXX_SRC_DIR)/*.cc}
+XXX_SRC_BUILD = $(BUILD_DIR)/app/src/xxx
+XXX_SRC_OBJS = $(patsubst %.cc, $(XXX_SRC_BUILD)/%.o, $(notdir $(XXX_SOURCES)))
+# XXX_TEST Directory and File
+TEST_XXX_INC_DIR = $(CUR_DIR)/test/inc/xxx
+TEST_XXX_INC_HEADERS = ${wildcard $(TEST_XXX_INC_DIR)/*.h}
+TEST_XXX_SRC_DIR = $(CUR_DIR)/test/src/xxx
+TEST_XXX_SOURCES = ${wildcard $(TEST_XXX_SRC_DIR)/*.cc}
+TEST_XXX_SRC_BUILD = $(BUILD_DIR)/test/src/xxx
+TEST_XXX_SRC_OBJS = $(patsubst %.cc, $(TEST_XXX_SRC_BUILD)/%.o, $(notdir $(TEST_XXX_SOURCES)))
+# XXX end
+
+# ALL SRC_BUILD
+
+# ALL SRC_OBJS
+		  
+# ALL INC_DIR
+		  
+# ALL INC_HEADERS
+
+MAIN_OBJ = 	$(BUILD_DIR)/test/main.o		 
+# Target
+all : $(SRC_BUILD) $(TESTS)
+	
+clean :
+	@echo "+++ Delete directory $(BUILD_DIR) +++"
+	@rm -rf $(BUILD_DIR)
+
+# run_tests
+$(TESTS) : $(SRC_OBJS) $(MAIN_OBJ)
+	$(CC) $(CXXFLAGS) $^ -o $@ $(INC_DIR) $(TEST_MOCK_INC) -L$(LIB_MOCK_INC) -lgmock -lpthread
+
+# XXX OBJ begin	
+$(XXX_SRC_OBJS) : $(XXX_SRC_BUILD)/%.o :  $(XXX_SRC_DIR)/%.cc $(XXX_INC_HEADERS)
+	$(CC) $(CXXFLAGS) -I$(XXX_INC_DIR) -c $< -o $@
+
+$(TEST_XXX_SRC_OBJS) : $(TEST_XXX_SRC_BUILD)/%.o :  $(TEST_XXX_SRC_DIR)/%.cc $(TEST_XXX_INC_HEADERS) $(XXX_INC_HEADERS)
+	$(CC) $(CXXFLAGS) -c $< -o $@ -I$(TEST_XXX_INC_DIR) -I$(XXX_INC_DIR) $(TEST_MOCK_INC) -L$(LIB_MOCK_INC) -lgmock -lpthread
+# XXX OBJ end
+		
+$(SRC_BUILD) :
+	@echo "+++ Create directory $@ +++" 
+	@mkdir -p $@
+
+$(MAIN_OBJ) : $(CUR_DIR)/test/main.cc
+	$(CC) $(CXXFLAGS) -c $< -o $@ $(INC_DIR) $(TEST_MOCK_INC) -L$(LIB_MOCK_INC) -lgmock -lpthread
+	
+
+ 

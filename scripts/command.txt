@@ -1,0 +1,7 @@
+# 命令
+g++ -isystem googletest/include -Igoogletest -isystem googlemock/include -Igooglemock -pthread -c googletest/src/gtest-all.cc
+g++ -isystem googletest/include -Igoogletest -isystem googlemock/include -Igooglemock -pthread -c googlemock/src/gmock-all.cc
+ar -rv libgmock.a gtest-all.o gmock-all.o
+
+# google test
+./run_tests --gtest_filter=DataTypeTest.IntegerTypes:FloatingPointTypes

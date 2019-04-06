@@ -1,0 +1,40 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(cpp_gtest) C++ Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "/home/zfl/code/gtest/proj/build/run_tests",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "/home/zfl/code/gtest/proj/build",
+            "environment": [],
+            "externalConsole": true,
+            "MIMode": "gdb",
+            "miDebuggerPath": "/usr/bin/gdb",
+            "pipeTransport": {
+                "pipeCwd": "C:/software/developer/cygwin64/bin",
+                "pipeProgram": "C:/software/developer/cygwin64/bin/ssh",
+                "pipeArgs": [
+                    "zfl@192.168.3.70"
+                ],
+                "debuggerPath": "/usr/bin/gdb"
+            },
+            "sourceFileMap": {
+                // "remote": "local"
+                "/home/zfl/code/gtest/proj":"${workspaceRoot}"
+            },
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        }
+    ]
+}

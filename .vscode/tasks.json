@@ -1,0 +1,73 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "1.Set Environment",
+            "type": "shell",
+            "command": "${workspaceFolder}\\.vscode\\set_environment.cmd",
+            "problemMatcher": []
+        },
+        {
+            "label": "2.Rsync Code",
+            "type": "shell",
+            "command": "${workspaceFolder}\\.vscode\\rsync.cmd",
+            "problemMatcher": []
+        },
+        {
+            "label": "3.Build",
+            "type": "shell",
+            "command": "${workspaceFolder}\\.vscode\\build.cmd",
+            "problemMatcher": []
+        },
+        {
+            "label": "4.Run",
+            "type": "shell",
+            "command": "${workspaceFolder}\\.vscode\\run.cmd",
+            "problemMatcher": []
+        },
+        {
+            "label": "5.Generate Makefile",
+            "type": "shell",
+            "command": "${workspaceFolder}\\.vscode\\generate_makefile.cmd",
+            "problemMatcher": []
+        },
+        {
+            "label": "6.Make Clear",
+            "type": "shell",
+            "command": "${workspaceFolder}\\.vscode\\clear.cmd",
+            "problemMatcher": []
+        },
+        {
+            "label": "7-1.Rsync and Build [Total]",
+            "type": "shell",
+            "command": "${workspaceFolder}\\.vscode\\rsync_build_1.cmd",
+            "problemMatcher": []
+        },
+        {
+            "label": "7-2.Rsync and Build [Increment]",
+            "type": "shell",
+            "command": "${workspaceFolder}\\.vscode\\rsync_build_2.cmd",
+            "problemMatcher": []
+        },
+        {
+            "label": "8-1.Rsync, Build and Run [Total]",
+            "type": "shell",
+            "command": "${workspaceFolder}\\.vscode\\rsync_build_run_1.cmd",
+            "problemMatcher": []
+        },
+        {
+            "label": "8-2.Rsync, Build and Run [Increment]",
+            "type": "shell",
+            "command": "${workspaceFolder}\\.vscode\\rsync_build_run_2.cmd",
+            "problemMatcher": []
+        },
+        {
+            "label": "9.Google Test List",
+            "type": "shell",
+            "command": "${workspaceFolder}\\.vscode\\tests_list.cmd",
+            "problemMatcher": []
+        }    
+    ]
+}

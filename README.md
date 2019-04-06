@@ -1,2 +1,2 @@
-# Gtest_CPP
-gtest for c++
+# cpp_gtest
+google test, cpp learning
